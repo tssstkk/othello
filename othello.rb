@@ -12,7 +12,6 @@ class Othello
 =begin
   function : play
 =end
-  # win_player -> 1 or 2
   def play
     puts "GAME START!"
     setup
@@ -32,16 +31,16 @@ class Othello
   スタートの前準備
 =end
   def setup
-    board[4][4] = 2
-    board[4][5] = 1
-    board[5][4] = 1
-    board[5][5] = 2
+    self.board[4][4] = 2
+    self.board[4][5] = 1
+    self.board[5][4] = 1
+    self.board[5][5] = 2
     10.times do |i|
       10.times do |j|
         if i != 0 && j != 0
           next
         end
-        board[i][j] = -1
+        self.board[i][j] = -1
       end
     end
   end
@@ -70,7 +69,6 @@ class Othello
       board_create
       stone_count
 
-      p have_stone
       if have_stone.min == 0
         break
       end
@@ -86,7 +84,7 @@ class Othello
     row = input_row[tmp_row]
     col = tmp_col.to_i
 
-    board[col][row] = turn + 1
+    self.board[col][row] = turn + 1
 
     # 上下左右斜めをチェック
     8.times do |num|
@@ -132,7 +130,7 @@ class Othello
         next
       elsif board[col + i][row + j] == my
         while i != 0 || j != 0
-          board[col + i][row + j] = my
+          self.board[col + i][row + j] = my
           i -= tmp_i
           j -= tmp_j
         end
@@ -200,8 +198,7 @@ class Othello
       end
     end
 
-    have_stone[0] = p1_cnt
-    have_stone[1] = p2_cnt
+    self.have_stone = [p1_cnt, p2_cnt]
   end
 
 end
