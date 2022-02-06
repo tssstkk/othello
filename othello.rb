@@ -15,6 +15,7 @@ class Othello
   # win_player -> 1 or 2
   def play
     puts "GAME START!"
+    setup
     start
 
     if have_stone[0] > have_stone[1]
@@ -27,9 +28,10 @@ class Othello
   end
 
 =begin
-  function : start
+  function : setup
+  スタートの前準備
 =end
-  def start
+  def setup
     board[4][4] = 2
     board[4][5] = 1
     board[5][4] = 1
@@ -42,7 +44,12 @@ class Othello
         board[i][j] = -1
       end
     end
-    
+  end
+
+=begin
+  function : start
+=end
+  def start
     # 盤面を描画
     board_create
 
